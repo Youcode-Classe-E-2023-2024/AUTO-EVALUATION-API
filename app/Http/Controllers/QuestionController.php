@@ -13,7 +13,8 @@ class QuestionController extends Controller
      */
     public function index()
     {
-       return QuestionModel::all();
+        return QuestionModel::with('competence')->get();
+//       return QuestionModel::all();
     }
 
     /**
