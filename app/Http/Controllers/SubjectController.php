@@ -13,7 +13,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return SubjectModel::all();
+        return SubjectModel::with('competence')->get();
     }
 
     /**
@@ -34,7 +34,14 @@ class SubjectController extends Controller
      */
     public function show(string $id)
     {
-        return SubjectModel::find($id);
+        $subject = SubjectModel::with('competence')->find($id);
+
+        if ($subject) {
+            return $subject;
+        } else {
+
+            return response()->json(['error' => 'Subject not found'], 404);
+        }
     }
 
     /**
