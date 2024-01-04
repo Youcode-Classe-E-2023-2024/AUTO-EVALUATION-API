@@ -15,7 +15,7 @@ class CompetenceModel extends Model
     );
 
     public function categorie(){
-        return $this->belongsTo(CategoryModel::class);
+        return $this->belongsTo(CategoryModel::class,'categoryId');
     }
 
     public function actions()
