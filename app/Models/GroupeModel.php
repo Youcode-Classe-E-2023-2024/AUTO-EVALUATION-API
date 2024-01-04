@@ -11,5 +11,11 @@ class GroupeModel extends Model
       'nom',
       'description'
     ];
+
+    public function sessions()
+    {
+        return $this->hasMany(SessionModel::class, 'group_id');
+    }
+
     use HasFactory;
 }
