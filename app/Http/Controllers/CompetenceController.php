@@ -12,7 +12,8 @@ class CompetenceController extends Controller
      */
     public function index()
     {
-        return CompetenceModel::all();
+        return CompetenceModel::with('categorie')->get();
+
     }
 
     /**
