@@ -6,6 +6,7 @@ use App\Http\Controllers\ActionController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\GroupeController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +65,13 @@ Route::post('/groups', [GroupeController::class,'store']);
 Route::put('/groups/{id}', [GroupeController::class,'update']);
 Route::delete('/groups/{id}', [GroupeController::class,'destroy']);
 
+
+// crud session
+Route::get('/sessions', [SessionController::class,'index']);
+Route::get('/sessions/{id}', [SessionController::class,'show']);
+Route::post('/sessions', [SessionController::class,'store']);
+Route::put('/sessions/{id}', [SessionController::class,'update']);
+Route::delete('/sessions/{id}', [SessionController::class,'destroy']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
