@@ -35,7 +35,15 @@ class CompetenceController extends Controller
      */
     public function show(string $id)
     {
-        return CompetenceModel::find($id);
+        $competence = CompetenceModel::with('categorie')->find($id);
+
+
+        if ($competence) {
+            return $competence;
+        } else {
+
+            return response()->json(['error' => 'Competence not found'], 404);
+        }
     }
 
     /**

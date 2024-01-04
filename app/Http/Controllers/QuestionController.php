@@ -14,7 +14,7 @@ class QuestionController extends Controller
     public function index()
     {
         return QuestionModel::with('competence')->get();
-//       return QuestionModel::all();
+
     }
 
     /**
@@ -35,7 +35,15 @@ class QuestionController extends Controller
      */
     public function show(string $id)
     {
-        return QuestionModel::find($id);
+        $question = QuestionModel::with('competence')->find($id);
+
+
+        if ($question) {
+            return $question;
+        } else {
+
+            return response()->json(['error' => 'Competence not found'], 404);
+        }
     }
 
     /**
