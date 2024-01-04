@@ -15,11 +15,13 @@ class SessionModel extends Model
     ];
 
     public function subject(){
-        return $this->belongsTo(SubjectModel::class);
+        return $this->belongsTo(SubjectModel::class , 'subject_id');
     }
 
+
+
     public function group(){
-        return $this->hasMany(GroupeModel::class);
+        return $this->belongsTo(GroupeModel::class , 'group_id');
     }
 
     // here add the apprenant FK
