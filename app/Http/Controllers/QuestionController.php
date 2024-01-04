@@ -42,7 +42,7 @@ class QuestionController extends Controller
             return $question;
         } else {
 
-            return response()->json(['error' => 'Competence not found'], 404);
+            return response()->json(['error' => 'Question not found'], 404);
         }
     }
 
