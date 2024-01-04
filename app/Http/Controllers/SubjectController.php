@@ -26,7 +26,7 @@ class SubjectController extends Controller
            'description'=>'required',
            'competence_id'=>'required',
        ]);
-       return SubdocumentException::create($request->all());
+       return SubjectModel::create($request->all());
     }
 
     /**
@@ -34,7 +34,7 @@ class SubjectController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return SubjectModel::find($id);
     }
 
     /**
@@ -42,7 +42,9 @@ class SubjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $subject = SubjectModel::find($id);
+        $subject->update($request->all());
+        return $subject;
     }
 
     /**
@@ -50,6 +52,6 @@ class SubjectController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return SubjectModel::destroy($id);
     }
 }
