@@ -5,6 +5,7 @@ use App\Http\Controllers\CompetenceController;
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\GroupeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -55,6 +56,13 @@ Route::get('/subjects/{id}', [SubjectController::class,'show']);
 Route::post('/subjects', [SubjectController::class,'store']);
 Route::put('/subjects/{id}', [SubjectController::class,'update']);
 Route::delete('/subjects/{id}', [SubjectController::class,'destroy']);
+
+// crud group
+Route::get('/groups', [GroupeController::class,'index']);
+Route::get('/groups/{id}', [GroupeController::class,'show']);
+Route::post('/groups', [GroupeController::class,'store']);
+Route::put('/groups/{id}', [GroupeController::class,'update']);
+Route::delete('/groups/{id}', [GroupeController::class,'destroy']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
