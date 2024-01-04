@@ -12,7 +12,9 @@ class SessionController extends Controller
      */
     public function index()
     {
-        return SessionModel::all();
+        $sessions = SessionModel::with('subject', 'group')->get();
+        return $sessions;
+
     }
 
     /**
@@ -35,7 +37,15 @@ class SessionController extends Controller
      */
     public function show(string $id)
     {
-        return SessionModel::find($id);
+
+        $session = SessionModel::with('subject', 'group')->find($id);
+
+        if ($session) {
+            return $session;
+        } else {
+
+            return response()->json(['error' => 'session not found'], 404);
+        }
     }
 
     /**
