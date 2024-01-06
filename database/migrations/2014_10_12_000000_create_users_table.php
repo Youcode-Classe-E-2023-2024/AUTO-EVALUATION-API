@@ -17,8 +17,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedBigInteger('group_id')->nullable();;
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('group_id')->references('id')->on('groupe_models')->onDelete('cascade');
+
         });
     }
 
