@@ -27,5 +27,12 @@ class CompetenceModel extends Model
     {
         return $this->hasMany(QuestionModel::class);
     }
+
+    public function evaluations()
+    {
+        return $this->belongsToMany(EvaluationModel::class , 'competence_evaluation' , 'evaluation_id' ,'evaluation_id')
+            ->withPivot('is_correct')
+            ->withTimestamps();
+    }
     use HasFactory;
 }
