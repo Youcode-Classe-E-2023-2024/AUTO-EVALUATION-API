@@ -7,6 +7,8 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\Evaluation_Competence_Controller;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -82,11 +84,21 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/sessions/{id}', [SessionController::class,'update']);
     Route::delete('/sessions/{id}', [SessionController::class,'destroy']);
 
+    // crud session
+    Route::get('/evaluations', [EvaluationController::class,'index']);
+    Route::get('/evaluations/{id}', [EvaluationController::class,'show']);
+    Route::post('/evaluations', [EvaluationController::class,'store']);
+    Route::put('/evaluations/{id}', [EvaluationController::class,'update']);
+    Route::delete('/evaluations/{id}', [EvaluationController::class,'destroy']);
+
+    // Many-Many betw Evaluation-Copmetence
+    Route::post('/evaluation-competence',[Evaluation_Competence_Controller::class,'store' ]);
 
     //log out
     Route::post('/logout', [AuthController::class, 'logout']);
 
 });
+
 
 
 
