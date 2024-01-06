@@ -23,6 +23,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function groupe(){
+        return $this->belongsTo(GroupeModel::class,'group_id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
