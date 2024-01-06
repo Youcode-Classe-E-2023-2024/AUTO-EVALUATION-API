@@ -13,7 +13,7 @@ class QuestionModel extends Model
         'competence_id',
     ];
     public function competence(){
-        return $this->belongsTo(CompetenceModel::class, 'competence_id');
+        return $this->belongsTo(CompetenceModel::class, 'competence_id' , 'id');
     }
 
 
